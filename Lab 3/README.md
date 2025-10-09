@@ -1,5 +1,5 @@
 # Chatterboxes
-**NAMES OF COLLABORATORS HERE**
+**NAMES OF COLLABORATORS HERE** (Solo)
 [![Watch the video](https://user-images.githubusercontent.com/1128669/135009222-111fe522-e6ba-46ad-b6dc-d1633d21129c.png)](https://www.youtube.com/embed/Q8FWzLMobx0?start=19)
 
 In this lab, we want you to design interaction with a speech-enabled device--something that listens and talks to you. This device can do anything *but* control lights (since we already did that in Lab 1).  First, we want you first to storyboard what you imagine the conversational interaction to be like. Then, you will use wizarding techniques to elicit examples of what people might say, ask, or respond.  We then want you to use the examples collected from at least two other people to inform the redesign of the device.
@@ -81,7 +81,7 @@ You can also play audio files directly with `aplay filename`. Try typing `aplay 
 
 \*\***Write your own shell file to use your favorite of these TTS engines to have your Pi greet you by name.**\*\*
 (This shell file should be saved to your own repo for this lab.)
-
+Look at hello_amy.sh in speech_scripts!
 ---
 Bonus:
 [Piper](https://github.com/rhasspy/piper) is another fast neural based text to speech package for raspberry pi which can be installed easily through python with:
@@ -146,7 +146,7 @@ and
 python faster_whisper_try.py
 ```
 \*\***Write your own shell file that verbally asks for a numerical based input (such as a phone number, zipcode, number of pets, etc) and records the answer the respondent provides.**\*\*
-
+Look at the ask_number folder!
 ### 🤖 NEW: AI-Powered Conversations with Ollama
 
 Want to add intelligent conversation capabilities to your voice projects? **Ollama** lets you run AI models locally on your Raspberry Pi for sophisticated dialogue without requiring internet connectivity!
@@ -251,6 +251,9 @@ I drew a diagram with possible interactions with different branches with differe
 Find a partner, and *without sharing the script with your partner* try out the dialogue you've designed, where you (as the device designer) act as the device you are designing.  Please record this interaction (for example, using Zoom's record feature).
 
 \*\***Describe if the dialogue seemed different than what you imagined when it was acted out, and how.**\*\*
+I imagined the ducky being used to solve math and programming problems, but I described it as a helper that sits on your desk. As a result, it got asked a question about helping schedule time. Nevertheless there was still a line of dialogue where the ducky could ask questions to help the user come to a conclusion to their issue which is how I envisioned the duck to interact with the user instead of just giving the user the answer immediately. There was also room for the duck to be friendly. 
+(link to transcript): https://docs.google.com/document/d/11_u0qU6dTTe9RkN74eHQU7arC2S0g0o86TyNUaAA8DE/edit?usp=sharing
+
 
 ### Wizarding with the Pi (optional)
 In the [demo directory](./demo), you will find an example Wizard of Oz project. In that project, you can see how audio and sensor data is streamed from the Pi to a wizard controller that runs in the browser.  You may use this demo code as a template. By running the `app.py` script, you can see how audio and sensor data (Adafruit MPU-6050 6-DoF Accel and Gyro Sensor) is streamed from the Pi to a wizard controller that runs in the browser `http://<YouPiIPAddress>:5000`. You can control what the system says from the controller as well!
@@ -310,6 +313,7 @@ Answer the following:
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
 
 \*\**your answer here*\*\*
+
 
 
 
