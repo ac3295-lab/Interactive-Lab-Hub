@@ -213,6 +213,7 @@ answer = ask_ai("How should I greet users?")
 **📖 Complete Setup Guide**: See `OLLAMA_SETUP.md` for detailed instructions, troubleshooting, and advanced usage!
 
 \*\***Try creating a simple voice interaction that combines speech recognition, Ollama processing, and text-to-speech output. Document what you built and how users responded to it.**\*\*
+Check out weather_assistant.py! When testing sometimes the transcript wasn't 100% correct and if the description of the weather wasn't specific enough Ollama protested slightly saying the description went against it's orignial instructions but gave a response nevertheless. Lastly, the responses took slightly too long to realistically be used in everyday life.  
 
 ### Serving Pages
 
@@ -313,6 +314,7 @@ Answer the following:
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
 
 \*\**your answer here*\*\*
+
 
 
 
