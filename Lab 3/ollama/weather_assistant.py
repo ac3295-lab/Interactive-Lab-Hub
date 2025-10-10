@@ -41,7 +41,7 @@ def ask_weather_advice(question):
     return response.json().get("response", "Sorry, I couldn’t get advice right now.")
 # ========== TEXT-TO-SPEECH FUNCTION ==========
 def speak(text):
-    subprocess.run(["espeak", "-a", "70", "-s", "150", text], check=False)
+    subprocess.run(["espeak", "-a", "30", "-s", "150", text], check=False)
 
 
 # ========== MAIN INTERACTION ==========
