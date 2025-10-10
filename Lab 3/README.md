@@ -270,6 +270,9 @@ For Part 2, you will redesign the interaction with the speech-enabled device usi
 1. What are concrete things that could use improvement in the design of your device? For example: wording, timing, anticipation of misunderstandings...
 2. What are other modes of interaction _beyond speech_ that you might also use to clarify how to interact?
 3. Make a new storyboard, diagram and/or script based on these reflections.
+   
+I would make it so the duck has two modes: regular rubber ducky mode that just listens and is supportive, and TA rubber duck mode that gives hints as well as add a sensor to make a clear switch between the two. Currently, the Ollama the model I'm using is a bit slow when responding to prompts, so ideally I would switch over to a faster model. In order to mitigate this while wizarding I plan to simply use echo and play the ideal responses through the speaker. Additionally, a detailed guide should be included with the ducky to help mitage misunderstandings and provide better expectations for new users. Below are new storyboards adding to the design.
+![new_storyboard](https://github.com/user-attachments/assets/e1f2c97e-768c-4629-8724-5fddc26da9ae)
 
 ## Prototype your system
 
@@ -314,6 +317,7 @@ Answer the following:
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
 
 \*\**your answer here*\*\*
+
 
 
 
