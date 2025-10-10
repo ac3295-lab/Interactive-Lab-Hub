@@ -1,6 +1,6 @@
 # Chatterboxes
 **NAMES OF COLLABORATORS HERE** (Solo)
-
+(Chat gpt was used to help debug ask_number, weather_assistant.py, and duck.py)
 
 ## Prep for Part 1: Get the Latest Content and Pick up Additional Parts 
 
@@ -103,20 +103,19 @@ Try to get at least two people to interact with your system. (Ideally, you would
 Answer the following:
 
 ### What worked well about the system and what didn't?
-\*\**your answer here*\*\*
+The responses were overall very good and having the two different modes was a nice touch. The responses expectedly took much too long and tested user's patience, while it was only slightly jarring in the cheerleader mode, in the problem solving mode the users could see themselves getting frustrated quickly. Having the duck repeat that it could change modes also quickly became less helpful and more annoying. Incorporating the gesture sensor didn't add too much in it's current configuration and one user statesd that it would be better to simply be able to switch using voice commands once the model could run faster. That being said switching was very quick once the input was properly read. Additionally, having users end with "ok, finished" was problematic as users often forgot. Lastly, the voice model chosen wasn't extremely pleasant to the ears and suggestions to change it were made. 
 
 ### What worked well about the controller and what didn't?
+When it came time to switch users often would not be able to react fast enough for the system's liking causing it to default to the previous mode and making switching modes very clunky. The transcripting (which was printed out in the command line) made a few errors but overall did a good job of capturing what the user said. Questions of how to turn it on and off were made. 
 
-\*\**your answer here*\*\*
 
 ### What lessons can you take away from the WoZ interactions for designing a more autonomous version of the system?
-
-\*\**your answer here*\*\*
+I would definitely have to fix the several little bugs mentioned before (less repetition, shorter wait times, easier switching system, nicer voice) as well as make it a complete end to end system where the user can easily use a button or their voices to turn the system on and off. User's also mentioned additional features like being able to increase or decrease the volume of the voice or change it entirely themselves. 
 
 
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
 
-\*\**your answer here*\*\*
+I can definitely create transcripts of interactions between the users and the models and log how often users gesture to switch. Using the actual camera might be nice to capture user's facial expressions and body language to see if the encouragement is helping additionally. 
 
 
 
