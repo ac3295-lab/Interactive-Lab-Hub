@@ -39,15 +39,10 @@ def ask_weather_advice(question):
         }
     )
     return response.json().get("response", "Sorry, I couldn’t get advice right now.")
-
-# ========== TEXT-TO-SPEECH (PIPER) ==========
+# ========== TEXT-TO-SPEECH FUNCTION ==========
 def speak(text):
-    subprocess.run([
-        "piper",
-        "--model", "en_US-lessac-medium",
-        "--output_file", "response.wav"
-    ], input=text.encode(), check=True)
-    subprocess.run(["aplay", "response.wav"])
+    subprocess.run(["espeak", "-a", "70", "-s", "150", text], check=False)
+
 
 # ========== MAIN INTERACTION ==========
 print("Ask about what to wear with the weather (say 'ok finished' when done)...")
