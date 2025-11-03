@@ -1,7 +1,5 @@
 # Observant Systems
 
-**NAMES OF COLLABORATORS HERE**
-
 
 For lab this week, we focus on creating interactive systems that can detect and respond to events or stimuli in the environment of the Pi, like the Boat Detector we mentioned in lecture. 
 Your **observant device** could, for example, count items, find objects, recognize an event or continuously monitor a room.
@@ -70,6 +68,8 @@ The first 2 inferences will be slower. Now, you can try placing several objects 
 
 Read the `infer.py` script and become familiar with the code. You can change the video resolution and frames per second (FPS). You may also use the weights of the larger pre-trained mobilenet_v3_large model, as described [here](https://pytorch.org/tutorials/intermediate/realtime_rpi.html#model-choices).
 
+<img width="498" height="361" alt="Screenshot 2025-10-22 at 4 51 24 PM" src="https://github.com/user-attachments/assets/ed6b1138-7a82-49f5-8652-1bfd97684e77" />
+
 #### More classes
 
 [PyTorch supports transfer learning](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html), so you can fine‑tune and transfer learn models to recognize your own objects. It requires extra steps, so we won't cover it here.
@@ -82,6 +82,7 @@ The following sections describe tools ([MediaPipe](#mediapipe) and [Teachable Ma
 #### MediaPipe
 
 A established open source and efficient method of extracting information from video streams comes out of Google's [MediaPipe](https://mediapipe.dev/), which offers state of the art face, face mesh, hand pose, and body pose detection.
+
 
 ![Media pipe](Readme_files/mp.gif)
 
@@ -101,7 +102,10 @@ Try the two main features of this script: 1) pinching for percentage control, an
 Consider how you might use this position based approach to create an interaction, and write how you might use it on either face, hand or body pose tracking.
 
 (You might also consider how this notion of percentage control with hand tracking might be used in some of the physical UI you may have experimented with in the last lab, for instance in controlling a servo or rotary encoder.)
+<img width="686" height="814" alt="Screenshot 2025-10-22 at 4 46 34 PM" src="https://github.com/user-attachments/assets/ca88c23c-a514-48aa-8759-bbd1604d0beb" />
 
+<img width="1440" height="900" alt="Screenshot 2025-10-22 at 4 47 18 PM" src="https://github.com/user-attachments/assets/82c8677e-db7d-4a78-8749-744a88d2122c" />
+<img width="694" height="716" alt="Screenshot 2025-10-22 at 5 26 05 PM" src="https://github.com/user-attachments/assets/50d89e16-7350-4ff6-a3e6-65293fba5843" />
 
 
 #### Moondream Vision-Language Model
@@ -119,8 +123,11 @@ python moondream_simple.py
 ```
 
 This will capture an image from your webcam and let you ask questions about it in natural language. Note that vision-language models are slower than classification models (responses may take up to minutes on a Raspberry Pi). There are newer models like [LFM2-VL](https://huggingface.co/LiquidAI/LFM2-VL-450M-GGUF), but many are very recent and not yet optimized for embedded devices.
+<img width="721" height="682" alt="Screenshot 2025-10-22 at 4 58 49 PM" src="https://github.com/user-attachments/assets/5b00c53b-bfe5-4b22-955c-d255802e70eb" />
 
 **Design consideration**: Think about how slower response times change your interaction design. What kinds of observant systems benefit from thoughtful, delayed responses rather than real-time classification? Consider systems that monitor over longer time periods or provide periodic summaries rather than instant feedback.
+
+You could attach it to something you expect to take a long time to process like polaroids!
 
 #### Teachable Machines
 Google's [TeachableMachines](https://teachablemachine.withgoogle.com/train) is very useful for prototyping with the capabilities of machine learning. We are using [a python package](https://github.com/MeqdadDev/teachable-machine-lite) with tensorflow lite to simplify the deployment process.
@@ -136,6 +143,7 @@ After installation, connect your webcam to your Pi and use **VNC to access to yo
 ```
 (venv-tml) pi@ixe00:~ Interactive-Lab-Hub/Lab 5 $ python tml_example.py
 ```
+<img width="843" height="510" alt="Screenshot 2025-10-22 at 5 05 52 PM" src="https://github.com/user-attachments/assets/a3cfcc2e-83f4-466b-a26e-b821c0f43270" />
 
 
 Next train your own model. Visit [TeachableMachines](https://teachablemachine.withgoogle.com/train), select Image Project and Standard model. The raspberry pi 4 is capable to run not just the low resource models. Second, use the webcam on your computer to train a model. *Note: It might be advisable to use the pi webcam in a similar setting you want to deploy it to improve performance.*  For each class try to have over 150 samples, and consider adding a background or default class where you have nothing in view so the model is trained to know that this is the background. Then create classes based on what you want the model to classify. Lastly, preview and iterate. Finally export your model as a 'Tensorflow lite' model. You will find an '.tflite' file and a 'labels.txt' file. Upload these to your pi (through one of the many ways such as [scp](https://www.raspberrypi.com/documentation/computers/remote-access.html#using-secure-copy), sftp, [vnc](https://help.realvnc.com/hc/en-us/articles/360002249917-VNC-Connect-and-Raspberry-Pi#transferring-files-to-and-from-your-raspberry-pi-0-6), or a connected visual studio code remote explorer).
@@ -143,6 +151,9 @@ Next train your own model. Visit [TeachableMachines](https://teachablemachine.wi
 ![Tensorflow Lite Download](Readme_files/tml_download-model.png)
 
 Include screenshots of your use of Teachable Machines, and write how you might use this to create your own classifier. Include what different affordances this method brings, compared to the OpenCV or MediaPipe options.
+<img width="1440" height="900" alt="Screenshot 2025-10-22 at 5 13 46 PM" src="https://github.com/user-attachments/assets/08580a52-abfa-4ed6-b657-9a2e863390e6" />
+I used it to create a classifier of happy and sad faces, this method allows a lot of freedom for what you want to classify and while restricting possible outputs (for example image recognition in pytorch has a lot of possibilites, making it harder if you just want a binary between two things). Compared to media pipe teachable machines would be able to make use of the full context like colors and shapes rather than just hand positions and movements allowing for more flexibility. 
+
 
 #### (Optional) Legacy audio and computer vision observation approaches
 In an earlier version of this class students experimented with observing through audio cues. Find the material here:
@@ -161,6 +172,7 @@ In an earlier version of this class students experimented with foundational comp
 
 
 **\*\*\*Describe and detail the interaction, as well as your experimentation here.\*\*\***
+I really liked the MediaPipe model and thought it was really cool! The sliding feature with your hands caught my eye and it would be cool to control how loud the bluetooth speaker was through the pinching motion. The workflow would be something like this: program prompts listener through a spoken statement if the volume is too loud, explaining the user will be able to use their hands to adjust -> gives 30 second window for user to adjust accordingly -> says what sound level the user has chosen and proceeds to play. I was originally thinking about doing my polaroid idea with moondream-vision language model, but thought that the use of it may be too clunky and slow. A user would have to look at a terminal or screen to be prompted to aim the webcam to take a "polaroid" and then either have a limited amount of time to shoot or have to input a stop command while framing their shot. I then pivoted to the MediaPipe model and was thinking about either using the hand gestures or the percentage control. Ultimately, I decided the percentage control allowed more a more interactive experience. One hand gesture could be mapped to one output (ex: thumbs up to a cheering sound), while the percentage control allows a spectrum or range of outputs. Additionally, using the percentage control allows the user have a simple cause and effect rather than hearing or seeing a long list of different hand gestures to sounds. Lastly, some hand gestures may be hard to convey without visual aid while the single pinching motion may be easier to understand. 
 
 ### Part C
 ### Test the interaction prototype
