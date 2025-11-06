@@ -182,31 +182,32 @@ I really liked the MediaPipe model and thought it was really cool! The sliding f
 
 Now flight test your interactive prototype and **note down your observations**:
 For example:
-1. When does it what it is supposed to do?
-1. When does it fail?
-1. When it fails, why does it fail?
-1. Based on the behavior you have seen, what other scenarios could cause problems?
+1. When does it what it is supposed to do? It does what it's supposed to do when you are visible and the appropriate distance away.
+1. When does it fail? When your fingers are overlapping or not visible. 
+1. When it fails, why does it fail? It fails to read your hand gesture and cannot accurate pick up your hand. 
+1. Based on the behavior you have seen, what other scenarios could cause problems? In lowlight situations, if the user cannot accurately position themselves, if the user overlaps their finders. 
 
 **\*\*\*Think about someone using the system. Describe how you think this will work.\*\*\***
-1. Are they aware of the uncertainties in the system?
-1. How bad would they be impacted by a miss classification?
-1. How could change your interactive system to address this?
-1. Are there optimizations you can try to do on your sense-making algorithm.
+1. Are they aware of the uncertainties in the system? I think they could visually see the lines crossing and see the the model struggles to pick up their hands. Though without documentation they may not know what the purpose of the lines are or what motion they are supposed to do. 
+1. How bad would they be impacted by a miss classification? They might get confused and a little annoyed. 
+1. How could change your interactive system to address this? I should definitely prompt them to let them know something will happen 
+1. Are there optimizations you can try to do on your sense-making algorithm. I think the algorithm works fine, I think it's more on documentaiton and making the users are in the correct spot and distance from the camera. 
 
 ### Part D
 ### Characterize your own Observant system
 
 Now that you have experimented with one or more of these sense-making systems **characterize their behavior**.
 During the lecture, we mentioned questions to help characterize a material:
-* What can you use X for?
-* What is a good environment for X?
-* What is a bad environment for X?
-* When will X break?
-* When it breaks how will X break?
-* What are other properties/behaviors of X?
-* How does X feel?
+* What can you use X for? You could possibly use it to help adjust opacity and take hands-free, self-edited photos. 
+* What is a good environment for X? A reasonably-lit area where the user and their hands are visible. 
+* What is a bad environment for X? A dark area. 
+* When will X break? It breaks when it cannot read your hand positions or when your fingers overlap. 
+* When it breaks how will X break? It won't work how you want it to, won't pick up what you want it to and when it does pick things up it's identification is a bit muddled preventing it from working accurately. 
+* What are other properties/behaviors of X? It is very reactive and you can clearly see what it is identifying and reacting to. 
+* How does X feel? It is reasonably smooth and corresponds nicely with slower motions, though it is generally able to pick up quicker motions. 
 
 **\*\*\*Include a short video demonstrating the answers to these questions.\*\*\***
+This is a link for all but what is a bad environment: https://youtube.com/shorts/WAseYb6eIUU?feature=share
 
 ### Part 2.
 
