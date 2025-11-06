@@ -101,6 +101,8 @@ Try the two main features of this script: 1) pinching for percentage control, an
 
 Consider how you might use this position based approach to create an interaction, and write how you might use it on either face, hand or body pose tracking.
 
+You could allow the user to make touchless decisions (ex: changing the volume of a song or striking a pose to make a decision). Additionally, you could use it in body pose tracking for fun games to see who can strick the best poses fastesr etc. Lastly, you can use face tracking to show emotion and make some decision based off of that as well (ex: singing a song to make the user happier). 
+
 (You might also consider how this notion of percentage control with hand tracking might be used in some of the physical UI you may have experimented with in the last lab, for instance in controlling a servo or rotary encoder.)
 <img width="686" height="814" alt="Screenshot 2025-10-22 at 4 46 34 PM" src="https://github.com/user-attachments/assets/ca88c23c-a514-48aa-8759-bbd1604d0beb" />
 
