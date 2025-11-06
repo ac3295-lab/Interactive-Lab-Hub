@@ -16,7 +16,7 @@ cap = cv2.VideoCapture(0)
 cap.set(3, wCam)
 cap.set(4, hCam)
 
-detector = htm.handDetector(detectionCon=0.7)
+detector = htm.handDetector(detectionCon=0)
 
 # Load the dog image with transparency (RGBA)
 dog_img = cv2.imread(dog_img_path, cv2.IMREAD_UNCHANGED)
