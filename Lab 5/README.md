@@ -1,5 +1,6 @@
 # Observant Systems
 
+(solo) chat gpt was used for ghost_final.py and ghost_hand_pose.py.
 
 For lab this week, we focus on creating interactive systems that can detect and respond to events or stimuli in the environment of the Pi, like the Boat Detector we mentioned in lecture. 
 Your **observant device** could, for example, count items, find objects, recognize an event or continuously monitor a room.
@@ -112,7 +113,7 @@ For example:
 
 ### Part D
 ### Characterize your own Observant system
-
+Pngs from pngtree.com!
 Now that you have experimented with one or more of these sense-making systems **characterize their behavior**.
 During the lecture, we mentioned questions to help characterize a material:
 * What can you use X for? You could possibly use it to help adjust opacity and take hands-free, self-edited photos. 
@@ -132,3 +133,5 @@ Following exploration and reflection from Part 1, finish building your interacti
 I decided I wanted to develop the interaction a bit to make it usable and add more value to users. I can imagine it in a theme park like disney land with users being amused at the suddenly appearing "ghosts" and able to touchlessly take pictures of them. Being able to take the picture without the user hitting any buttons was important to me as ideally the user would be able to leave the interaction without touching anything. I added visual prompts for when the photo was about to be taken and how to trigger the surprise. It had required some iteration and debugging as originally as soon as the user's hands were out of view the dogs would disappear and the countdown would stop. Also, the original pictures did not include the dogs at all! Ideally I would want this program with the camera in a fixed position with a spot on the floor for users to walk in. While testing it myself, I had my users sit in a chair a specific distance away. Additional user testing had gone ok, though there were some complaints about the sudden picture being taken and not being given enough time to pose. Additionally, as seen in the video below when I ran it myself, the model wasn't able to read the gesture well if the whole hand wasn't in frame, something I hadn't thought of before. I imagine within this exibit in real life some pictures and tips will be posted along the walls near the camera. 
 **\*\*\*Include a short video demonstrating the finished result.\*\*\***
 https://youtube.com/shorts/FZbXJjUhyf8?feature=share
+
+
