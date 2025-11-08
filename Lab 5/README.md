@@ -75,7 +75,6 @@ You could allow the user to make touchless decisions (ex: changing the volume of
 You could attach it to something you expect to take a long time to process like polaroids!
 
 #### Teachable Machines
-```
 <img width="843" height="510" alt="Screenshot 2025-10-22 at 5 05 52 PM" src="https://github.com/user-attachments/assets/a3cfcc2e-83f4-466b-a26e-b821c0f43270" />
 
 
