@@ -29,7 +29,7 @@ print("Waiting for round announcements...")
 
 try:
     while True:
-        msg = input("Your move (rock/paper/scissors or quit): ").strip().lower()
+        msg = input("").strip().lower()
         if msg == "quit":
             client.publish(topic_choice, "quit")
             print("👋 You left the game.")
