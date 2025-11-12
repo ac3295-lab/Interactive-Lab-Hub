@@ -22,19 +22,26 @@ client.connect(broker, port)
 client.subscribe(topic_status)
 client.loop_start()
 
+# --- Announce join ---
+client.publish(topic_choice, "join")
+print(f"👋 You have joined the game as {player_name}!")
 print("Waiting for round announcements...")
 
-while True:
-    msg = input("Your move (rock/paper/scissors or quit): ").strip().lower()
-    if msg == "quit":
-        break
-    if msg not in ["rock", "paper", "scissors"]:
-        print("Invalid choice.")
-        continue
+try:
+    while True:
+        msg = input("Your move (rock/paper/scissors or quit): ").strip().lower()
+        if msg == "quit":
+            client.publish(topic_choice, "quit")
+            print("👋 You left the game.")
+            break
+        if msg not in ["rock", "paper", "scissors"]:
+            print("Invalid choice.")
+            continue
 
-    client.publish(topic_choice, msg)
-    print("Sent your choice.")
-    time.sleep(1)
+        client.publish(topic_choice, msg)
+        print("✅ Sent your choice.")
+        time.sleep(1)
 
-client.loop_stop()
-client.disconnect()
+finally:
+    client.loop_stop()
+    client.disconnect()

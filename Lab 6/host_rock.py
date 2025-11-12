@@ -8,12 +8,14 @@ username = "idd"
 password = "device@theFarm"
 
 ROUND_DURATION = 10  # seconds per round
+MIN_PLAYERS = 2      # minimum to start playing
 
 # --- State ---
 choices = {}
 active_players = set()
 round_active = False
 game_active = False
+waiting_for_players = False
 
 # --- MQTT Setup ---
 client = mqtt.Client()
@@ -23,12 +25,8 @@ client.username_pw_set(username, password)
 def determine_winner(players_choices):
     """Determine which choice wins overall."""
     unique_choices = set(players_choices.values())
-
-    # Tie if everyone picked the same or all three present
     if len(unique_choices) == 1 or len(unique_choices) == 3:
         return None
-
-    # Two-move cases
     if unique_choices == {"rock", "scissors"}:
         return "rock"
     if unique_choices == {"scissors", "paper"}:
@@ -36,29 +34,64 @@ def determine_winner(players_choices):
     if unique_choices == {"paper", "rock"}:
         return "paper"
 
-
 def on_message(client, userdata, msg):
-    global round_active, choices, active_players, game_active
+    global round_active, choices, active_players, game_active, waiting_for_players
     player = msg.topic.split("/")[-1]
     choice = msg.payload.decode().strip().lower()
 
+    # --- Handle join messages ---
+    if choice == "join":
+        if player not in active_players:
+            active_players.add(player)
+            print(f"{player} joined (waiting room).")
+            announce(f"👋 {player} joined the game! ({len(active_players)} players now)")
+
+            if not game_active:
+                game_active = True
+                waiting_for_players = True
+                announce("🎮 New Rock-Paper-Scissors game starting!")
+                announce("Waiting for players to join...")
+                time.sleep(1)
+
+            # If enough players now, start soon
+            if waiting_for_players and len(active_players) >= MIN_PLAYERS:
+                waiting_for_players = False
+                announce("✅ Enough players joined! Get ready to play...")
+                time.sleep(3)
+        return
+
+    # --- Handle quit messages ---
+    if choice == "quit":
+        if player in active_players:
+            active_players.remove(player)
+            announce(f"👋 {player} left the game. ({len(active_players)} players remaining)")
+            print(f"{player} quit.")
+            # If not enough players left, pause the game
+            if len(active_players) < MIN_PLAYERS:
+                waiting_for_players = True
+                announce("⚠ Not enough players to continue. Waiting for new players...")
+        return
+
+    # --- Normal choice handling (rock/paper/scissors) ---
     if choice not in ["rock", "paper", "scissors"]:
         return
 
     if not game_active:
-        # Game is idle -> start a new one automatically
+        # Shouldn’t happen since join sets it up, but just in case
         game_active = True
         active_players.clear()
-        print(f"New game started by {player}!")
-        announce("New game starting! Waiting for players...")
-        time.sleep(2)
+        waiting_for_players = True
+        announce("🎮 New Rock-Paper-Scissors game starting!")
+        announce("Waiting for players to join...")
+        time.sleep(1)
 
     if not round_active:
-        print(f"{player} played early, will count next round.")
+        # If they play too early, just register them for next round
         active_players.add(player)
+        print(f"{player} played early; added to next round.")
         return
 
-    # During a round
+    # During an active round
     choices[player] = choice
     active_players.add(player)
     print(f"{player} chose {choice}")
@@ -70,14 +103,21 @@ def announce(message):
 
 
 def start_round():
-    global round_active, choices
-    if not active_players:
-        announce("⏸No active players. Waiting for new players to join...")
-        return False
+    global round_active, choices, waiting_for_players
 
+    if waiting_for_players:
+        announce("⏸ Waiting for enough players to join...")
+        return True  # stay in game but don’t start yet
+
+    if len(active_players) < MIN_PLAYERS:
+        waiting_for_players = True
+        announce("⚠ Not enough players to continue. Waiting for more...")
+        return True
+
+    # --- Round start ---
     choices = {}
     round_active = True
-    announce(f"\nNew round! You have {ROUND_DURATION} seconds to play.")
+    announce(f"\n🕹 New round starting! You have {ROUND_DURATION} seconds to play!")
     countdown = ROUND_DURATION
     while countdown > 0:
         print(f" {countdown}s remaining...", end="\r")
@@ -87,31 +127,31 @@ def start_round():
     round_active = False
 
     if not choices:
-        announce("No moves received. Waiting for players...")
-        return False
+        announce("😴 No moves received this round. Waiting for players...")
+        return True
 
     winner_choice = determine_winner(choices)
     if winner_choice is None:
-        announce(f"It's a tie! Everyone stays in. ({choices})")
+        announce(f"🤝 It's a tie! Everyone stays in. ({choices})")
         return True
 
     survivors = [p for p, c in choices.items() if c == winner_choice]
     eliminated = [p for p in active_players if p not in survivors]
 
-    announce(f"Winning move: {winner_choice.upper()}")
-    announce(f"Survivors: {', '.join(survivors)}")
+    announce(f"🏆 Winning move: {winner_choice.upper()}")
+    announce(f"✅ Survivors: {', '.join(survivors)}")
     if eliminated:
-        announce(f"Eliminated: {', '.join(eliminated)}")
+        announce(f"❌ Eliminated: {', '.join(eliminated)}")
 
     active_players.clear()
     active_players.update(survivors)
 
     # Game end conditions
     if len(active_players) == 1:
-        announce(f"Game Over! Champion: {list(active_players)[0]}")
+        announce(f"🎉 Game Over! Champion: {list(active_players)[0]}")
         return False
     elif len(active_players) == 0:
-        announce("Everyone eliminated! No winner.")
+        announce("😵 Everyone eliminated! No winner.")
         return False
     else:
         return True
