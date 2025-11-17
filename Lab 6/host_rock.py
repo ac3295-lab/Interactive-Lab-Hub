@@ -6,7 +6,7 @@ port = 1883
 username = "idd"
 password = "device@theFarm"
 
-ROUND_DURATION = 10
+ROUND_DURATION = 20
 MIN_PLAYERS = 2
 
 # --- State ---
