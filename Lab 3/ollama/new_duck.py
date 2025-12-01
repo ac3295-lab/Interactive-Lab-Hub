@@ -16,7 +16,7 @@ import os
 
 # ========== GEMINI SETUP ==========
 # TODO: Paste your Google API Key here
-GOOGLE_API_KEY = "AIzaSyARp8DTTcb1vsYyys7YmkfxVD7aNRMqJYM"
+GOOGLE_API_KEY = "YOUR_API_KEY_HERE"
 
 client = genai.Client(api_key=GOOGLE_API_KEY)
 

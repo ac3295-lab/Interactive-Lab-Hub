@@ -6,7 +6,7 @@ from google import genai
 from google.genai import types
 
 # Initialize client (use your real API key)
-client = genai.Client(api_key="AIzaSyDZ8paYyKfpxhgcsGQHprn2GM4Y3x350kE")
+client = genai.Client(api_key="hi")
 
 MODEL_NAME = "gemini-2.5-pro-preview-tts"
 
