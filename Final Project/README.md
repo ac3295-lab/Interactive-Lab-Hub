@@ -224,6 +224,9 @@ Below is a photo of a participant talking to CyberDuck, demonstrating voice-base
 Below is a photo of a participant testing CyberDuck’s gesture-based mode switching feature.:
 ![Testing Switching Mode](Switching_mode.jpg)
 
+Below is a photo of one last user testing before recording the final demo:
+![User Testing](Uer_testing.jpg)
+
 #### Additional Feature
 
 Building on insights from user testing, I introduced several additional features and refinements to Timer Mode to better support sustained focus, reduce ambiguity in voice-only interactions, and encourage post-session reflection. 
@@ -239,8 +242,10 @@ Finally, to reduce the disruptive impact of spoken interruptions during the focu
 ## Archive of All Code and Design Patterns
 
 #### Please view my source code [here]()
+(namely duck.py)
 
 ## Video Demo
+Demo Here: https://youtu.be/iJYPonsWY54 
 
 ## Reflections on Process
 
